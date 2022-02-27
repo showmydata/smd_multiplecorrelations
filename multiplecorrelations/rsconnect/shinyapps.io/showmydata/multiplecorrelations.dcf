@@ -1,0 +1,11 @@
+name: multiplecorrelations
+title:
+username:
+account: showmydata
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 625914
+bundleId: 5518967
+url: https://showmydata.shinyapps.io/multiplecorrelations/
+when: 1643389848.70786
+lastSyncTime: 1643389848.70787

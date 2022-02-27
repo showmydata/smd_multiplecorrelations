@@ -1,0 +1,10 @@
+name: multiplecorrelations
+title:
+username:
+account: wilmerstats
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 227645
+bundleId: 1661416
+url: https://wilmerstats.shinyapps.io/multiplecorrelations/
+when: 1540421730.26939
