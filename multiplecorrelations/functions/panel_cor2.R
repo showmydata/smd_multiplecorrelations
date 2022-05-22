@@ -7,7 +7,10 @@ panel_cor2 <- function(x, y, x1, y1, sp, nvar, lw, smoothness, digits = 2, perc_
   # compute correlation coefficient & n
   r=round(cor(data[,1],data[,2]),digits=digits)
   n=length(data[,1])
-  cis_r=CIr(r, n = n, level = .95)
+  #cis_r=CIr(r, n = n, level = .95)
+  ct = cor.test(data[,1],data[,2]); 
+  cis_r=round(ct$conf.int,3)
+  pv=signif(ct$p.value,3)
   lowerci_r=round(cis_r[1],digits=digits)
   upperci_r=round(cis_r[2],digits=digits)
   # generate text
@@ -17,6 +20,7 @@ panel_cor2 <- function(x, y, x1, y1, sp, nvar, lw, smoothness, digits = 2, perc_
   num4 <- format(c(upperci_r, 0.123456789), digits = digits)[1] # lower 95% CI text
   if (sp) txt5 <- paste("rho = ", num1, sep = "") else txt5 <- paste("r = ", num1, sep = "") # r or rho
   txt6 <- paste("n = ", num2, sep = "") # n
+  
   txt7 <- paste(" 95% CI =", sep= "") # text introducing the 95% CI
   txt8 <- paste("[", num3, ", ", num4, "]", sep = "") # 95% CI itself
   # write text

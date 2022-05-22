@@ -6,7 +6,7 @@ library(colourpicker)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Correlation: 2+ measures"),
+  titlePanel("Correlation: multiple measures"),
   
   # Sidebar with a slider input for the number of bins
   sidebarLayout(
@@ -68,6 +68,10 @@ shinyUI(fluidPage(
                   checkboxInput('tint2', 'separate color for negative values', FALSE),
                   conditionalPanel(condition="input.tint2",
                         colourInput(inputId="color2", label=NULL, value = "royalblue", showColour = c("both"), palette = c("square"), allowedCols = NULL, allowTransparent = TRUE, returnName = TRUE))
+      ),
+      
+      conditionalPanel(condition="input.upper=='stats' | input.lower=='stats'",
+                       checkboxInput('showp', 'replace n with p', FALSE)     
       )
       ),
       

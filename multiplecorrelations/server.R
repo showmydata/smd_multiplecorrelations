@@ -1,6 +1,6 @@
 # multiple correlations
 library(shiny)
-library(psychometric)
+#library(psychometric)
 library(stringr)
 source("functions/equate_zscored_axis_ranges2.R") # Need
 source("functions/panel_cor2.R") 
@@ -10,7 +10,6 @@ source("functions/perc_rank.R")                   # Redundant with 2corr
 source("functions/isolate_complete_pairs.R")
 source("functions/jitter_by_percent_min.R")       # Keep this! 
 #library(tidyverse)
-#source("functions/process_pasted_data.R")        # XXX
 
 shinyServer( # Function title (don't think this is necessary)
   function(input, output) { # Create the function
