@@ -1,6 +1,10 @@
-my_points <- function(x, y, x1, y1, sp, nvar, lw, smoothness, digits, perc_rank, dotint, panelcolor, panelcolor2, tintmaxcorr, ...){
+my_points <- function(x, y, x1, y1, nvar, lw, smoothness, digits, perc_rank, showp, poly, cats, dotint, panelcolor, panelcolor2, tintmaxcorr, ...){
   data=isolate_complete_pairs(x,y); if (perc_rank) {data=perc_rank(data)}; x=data[,1]; y=data[,2]; # re-rank data for correct spearman line fits
-  a=cor(x=data[,1], y=data[,2]) / tintmaxcorr; if (a>=1) a=.99 else if (a<=-1) a=-.99 
+  
+  if (poly & sum(complete.cases(unique(data[,1])))<=cats & sum(complete.cases(unique(data[,2]))) ) {a=polychoric(data); r=round(a$rho[2,1],digits=digits)}
+  else r=round(cor(data[,1],data[,2]),digits=digits)
+  
+  a=r/tintmaxcorr; if (a>=1) a=.99 else if (a<=-1) a=-.99 
   if (dotint==0) points(x1,y1,...) 
   else if (dotint==1) {
     b=col2rgb(panelcolor)/255; c=rgb(b[1],b[2],b[3],alpha=abs(a)); points(x1,y1,...); 
@@ -12,10 +16,13 @@ my_points <- function(x, y, x1, y1, sp, nvar, lw, smoothness, digits, perc_rank,
   }
 }
 
-my_line <- function(x, y, x1, y1, sp, nvar, lw, smoothness, digits, perc_rank, dotint, panelcolor, panelcolor2, tintmaxcorr, ...){
+my_line <- function(x, y, x1, y1, nvar, lw, smoothness, digits, perc_rank, showp, poly, cats, dotint, panelcolor, panelcolor2, tintmaxcorr, ...){
   data=isolate_complete_pairs(x,y); if (perc_rank) {data=perc_rank(data)}; x=data[,1]; y=data[,2]; # re-rank data for correct spearman line fits
-  a=cor(x=data[,1], y=data[,2]) / tintmaxcorr; 
-  if (a>=1) a=.99 else if (a<=-1) a=-.99 
+  
+  if (poly & sum(complete.cases(unique(data[,1])))<=cats & sum(complete.cases(unique(data[,2]))) ) {a=polychoric(data); r=round(a$rho[2,1],digits=digits)}
+  else r=round(cor(data[,1],data[,2]),digits=digits)
+  
+  a=r/tintmaxcorr; if (a>=1) a=.99 else if (a<=-1) a=-.99 
   if (dotint==0) points(x1,y1,...) 
   else if (dotint==1) {
     b=col2rgb(panelcolor)/255; c=rgb(b[1],b[2],b[3],alpha=abs(a)); points(x1,y1,...); rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = c); points(x1,y1,...); 
@@ -27,9 +34,13 @@ my_line <- function(x, y, x1, y1, sp, nvar, lw, smoothness, digits, perc_rank, d
   abline(lm(y~x),lwd=lw,col="blue")
 }
 
-my_curve <- function(x, y, x1, y1, sp, nvar, lw, smoothness, digits, perc_rank, dotint, panelcolor, panelcolor2, tintmaxcorr, ...){
+my_curve <- function(x, y, x1, y1, nvar, lw, smoothness, digits, perc_rank, showp, poly, cats, dotint, panelcolor, panelcolor2, tintmaxcorr, ...){
   data=isolate_complete_pairs(x,y); if (perc_rank) {data=perc_rank(data)}; x=data[,1]; y=data[,2]; # re-rank data for correct spearman line fits
-  a=cor(x=data[,1], y=data[,2]) / tintmaxcorr; if (a>=1) a=.99 else if (a<=-1) a=-.99 
+  
+  if (poly & sum(complete.cases(unique(data[,1])))<=cats & sum(complete.cases(unique(data[,2]))) ) {a=polychoric(data); r=round(a$rho[2,1],digits=digits)}
+  else r=round(cor(data[,1],data[,2]),digits=digits)
+  
+  a=r/tintmaxcorr; if (a>=1) a=.99 else if (a<=-1) a=-.99 
   if (dotint==0) points(x1,y1,...) 
   else if (dotint==1) {
     b=col2rgb(panelcolor)/255; c=rgb(b[1],b[2],b[3],alpha=abs(a)); points(x1,y1,...); rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = c); points(x1,y1,...); 
@@ -45,9 +56,13 @@ my_curve <- function(x, y, x1, y1, sp, nvar, lw, smoothness, digits, perc_rank, 
     }
 }
 
-my_lineandcurve <- function(x, y, x1, y1, sp, nvar, lw, smoothness, digits, perc_rank, dotint, panelcolor, panelcolor2, tintmaxcorr, ...){
+my_lineandcurve <- function(x, y, x1, y1, nvar, lw, smoothness, digits, perc_rank, showp, poly, cats, dotint, panelcolor, panelcolor2, tintmaxcorr, ...){
   data=isolate_complete_pairs(x,y); if (perc_rank) {data=perc_rank(data)}; x=data[,1]; y=data[,2]; # re-rank data for correct spearman line fits
-  a=cor(x=data[,1], y=data[,2]) / tintmaxcorr; if (a>=1) a=.99 else if (a<=-1) a=-.99 
+  
+  if (poly & sum(complete.cases(unique(data[,1])))<=cats & sum(complete.cases(unique(data[,2]))) ) {a=polychoric(data); r=round(a$rho[2,1],digits=digits)}
+  else r=round(cor(data[,1],data[,2]),digits=digits)
+  
+  a=r/tintmaxcorr; if (a>=1) a=.99 else if (a<=-1) a=-.99 
   if (dotint==0) points(x1,y1,...) 
   else if (dotint==1) {
     b=col2rgb(panelcolor)/255; c=rgb(b[1],b[2],b[3],alpha=abs(a)); points(x1,y1,...); rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = c); points(x1,y1,...); 
