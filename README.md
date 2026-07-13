@@ -21,9 +21,12 @@ This application creates scatterplot matrices and related visualizations for exp
 ```r
 install.packages(c(
   "shiny",
-  "tidyverse",
-  "ggridges",
-  "ggthemes"
+  "stringr",
+  "psych",
+  "readr",
+  "gsheet",
+  "colourpicker",
+  "rclipboard"
 ))
 ```
 

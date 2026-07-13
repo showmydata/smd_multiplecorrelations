@@ -1,7 +1,7 @@
 # multiple correlations
 library(shiny)
 library(colourpicker)
-library("rclipboard") # added for URL project 3/22/24
+library(rclipboard) 
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(

@@ -1,9 +1,10 @@
 # multiple correlations
 library(shiny)
-#library(psychometric)
 library(stringr)
 library(psych)
 library(readr)
+library(gsheet)
+
 source("functions/equate_zscored_axis_ranges2.R") # Need
 source("functions/panel_cor2.R") 
 source("functions/points_and_lines.R") 
@@ -11,12 +12,10 @@ source("functions/pairs2.R")
 source("functions/perc_rank.R")                   # Redundant with 2corr
 source("functions/isolate_complete_pairs.R")
 source("functions/jitter_by_percent_min.R")       # Keep this! 
-
 source("functions/make_url.R") 
 source("functions/parse_url.R") 
 source("functions/add_data_link_to_url.R")
 source("functions/get_data_from_url.R")
-library("gsheet")
 
 shinyServer( # Initiate the shiny server
   function(input, output, session) { # Create the function -- added 'session' for URL project 3/22/24
